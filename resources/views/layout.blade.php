@@ -1,4 +1,5 @@
 <!doctype html>
+<script src="/js/main.js"></script>
 <html lang="lv">
  <head>
  <meta charset="utf-8">
@@ -14,14 +15,29 @@ eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="a
     <div class="bg-light mb-4 py-4">
         <div class="container">
             <div class="row">
-                <div class="col-md-12">
-                    <header class="navbar navbar-light">
-                        <span class="navbar-brand mb-0 h1">karlis.immers</span>
-                    </header>
-                </div>
+                <header class="col-md-12">
+                    <nav class="navbar navbar-light navbar-expand-md">
+                        <span class="navbar-brand mb-0 h1">Mārtiņš Zvīnis</span>
+                        <button class="navbar-toggler" type="button" data-bstoggle="collapse"
+                            data-bs-target="#navbarNav">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarNav">
+                            <ul class="navbar-nav">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/">Sākumlapa</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/authors">Autori</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </header>
             </div>
         </div>
     </div>
+
     <div class="container mb-4">
         <div class="row">
             <main class="col-md-12">

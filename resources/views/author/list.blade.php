@@ -15,12 +15,18 @@
  <tr>
  <td>{{ $author->id }}</td>
  <td>{{ $author->name }}</td>
- <td>Labot / Dzēst</td>
+ <td><a href="/authors/update/{{ $author->id }}" class="btn btn-outline-primary btnsm">Labot</a> / <form action="/authors/delete/{{ $author->id }}" method="post" class="deletionform d-inline">
+ @csrf
+ <button type="submit" class="btn btn-outline-danger btn-sm">Dzēst</button>
+</form>
+</td>
  </tr>
  @endforeach
  </tbody>
- </table>
- @else
- <p>Nav atrasts neviens ieraksts</p>
- @endif
+</table>
+<a href="/authors/create" class="btn btn-primary">Izveidot jaunu</a>
+
+@else
+<p>Nav atrasts neviens ieraksts</p>
+@endif
 @endsection
