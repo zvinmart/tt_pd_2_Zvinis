@@ -24,9 +24,10 @@
  @endforeach
  </tbody>
 </table>
-<a href="/authors/create" class="btn btn-primary">Izveidot jaunu</a>
+
 
 @else
 <p>Nav atrasts neviens ieraksts</p>
 @endif
+<a href="/authors/create" class="btn btn-primary">Izveidot jaunu</a>
 @endsection

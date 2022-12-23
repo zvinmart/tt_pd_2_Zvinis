@@ -3,7 +3,7 @@ use App\Http\Controllers\HomeController;
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthorController;
-
+use App\Http\Controllers\SongController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,3 +22,12 @@ Route::post('/authors/put', [AuthorController::class, 'put']);
 Route::get('/authors/update/{author}', [AuthorController::class, 'update']);
 Route::post('/authors/patch/{author}', [AuthorController::class, 'patch']);
 Route::post('/authors/delete/{author}', [AuthorController::class, 'delete']);
+
+
+// Book routes
+Route::get('/songs', [SongController::class, 'list']);
+Route::get('/songs/create', [SongController::class, 'create']);
+Route::post('/songs/put', [SongController::class, 'put']);
+Route::get('/songs/update/{song}', [SongController::class, 'update']);
+Route::post('/songs/patch/{song}', [SongController::class, 'patch']);
+Route::post('/songs/delete/{song}', [SongController::class, 'delete']);

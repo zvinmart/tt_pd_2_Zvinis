@@ -42,6 +42,14 @@ return [
             'url' => env('APP_URL').'/storage',
             'visibility' => 'public',
             'throw' => false,
+
+            'uploads' => [
+                'driver' => 'local',
+                'root' => public_path('images'),
+                'url' => env('APP_URL').'/images',
+                'visibility' => 'public',
+               ],
+               
         ],
 
         's3' => [
