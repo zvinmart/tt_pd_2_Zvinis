@@ -115,9 +115,9 @@ enctype="multipart/form-data"
  </label>
  @error('display')
  <p class="invalid-feedback">{{ $errors->first('display') }}</p>
- @enderror
- </div>
- </div>
+@enderror
+</div>
+</div>
 <button type="submit" class="btn btn-primary">
     {{ $song->exists ? 'Atjaunot ierakstu' : 'Pievienot ierakstu' }}
 </button>

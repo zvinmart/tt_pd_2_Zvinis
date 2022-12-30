@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Song;
 use App\Models\Author;
 use Illuminate\Http\Request;
+use App\Http\Requests\SongRequest;
+
 
 class SongController extends Controller
 {
@@ -33,39 +35,37 @@ class SongController extends Controller
         );
     }
 
-    public function put(Request $request)
+
+
+    private function saveSongData(Song $song, SongRequest $request)
     {
-        $validatedData = $request->validate([
-            'name' => 'required|min:3|max:256',
-            'author_id' => 'required',
-            'description' => 'nullable',
-            'price' => 'nullable|numeric',
-            'year' => 'numeric',
-            'image' => 'nullable|image',
-            'display' => 'nullable'
-        ]);
-        $song = new Song();
-        $song->name = $validatedData['name'];
-        $song->author_id = $validatedData['author_id'];
-        $song->description = $validatedData['description'];
-        $song->price = $validatedData['price'];
-        $song->year = $validatedData['year'];
+        $validatedData = $request->validated();
+        $song->fill($validatedData);
         $song->display = (bool) ($validatedData['display'] ?? false);
         if ($request->hasFile('image')) {
             $uploadedFile = $request->file('image');
             $extension = $uploadedFile->clientExtension();
             $name = uniqid();
             $song->image = $uploadedFile->storePubliclyAs(
-            '/',
-            $name . '.' . $extension,
-            'uploads'
+                '/',
+                $name . '.' . $extension,
+                'uploads'
             );
-           }
-           
+        }
         $song->save();
-        return redirect('/songs');
     }
 
+    public function put(SongRequest $request)
+    {
+        $song = new song();
+        $this->saveSongData($song, $request);
+        return redirect('/songs');
+    }
+    public function patch(Song $song, SongRequest $request)
+    {
+        $this->saveSongData($song, $request);
+        return redirect('/songs/update/' . $song->id);
+    }
     public function update(Song $song)
     {
         $authors = Author::orderBy('name', 'asc')->get();
@@ -78,38 +78,7 @@ class SongController extends Controller
             ]
         );
     }
-    public function patch(Song $song, Request $request)
-    {
-        $validatedData = $request->validate([
-            'name' => 'required|min:3|max:256',
-            'author_id' => 'required',
-            'description' => 'nullable',
-            'price' => 'nullable|numeric',
-            'year' => 'numeric',
-            'image' => 'nullable|image',
-            'display' => 'nullable'
-        ]);
-        $song->name = $validatedData['name'];
-        $song->author_id = $validatedData['author_id'];
-        $song->description = $validatedData['description'];
-        $song->price = $validatedData['price'];
-        $song->year = $validatedData['year'];
-        $song->display = (bool) ($validatedData['display'] ?? false);
-        if ($request->hasFile('image')) {
-            $uploadedFile = $request->file('image');
-            $extension = $uploadedFile->clientExtension();
-            $name = uniqid();
-            $song->image = $uploadedFile->storePubliclyAs(
-            '/',
-            $name . '.' . $extension,
-            'uploads'
-            );
-           }
-           
-        $song->save();
-        return redirect('/songs/update/' . $song->id);
-    }
-
+    
     public function delete(Song $song)
     {
         $song->delete();
