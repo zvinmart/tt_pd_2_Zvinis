@@ -24,11 +24,11 @@ enctype="multipart/form-data"
  @error('image')
  <p class="invalid-feedback">{{ $errors->first('image') }}</p>
  @enderror
-</div>
-
  method="post"
  action="{{ $song->exists ? '/songs/patch/' . $song->id : '/songs/put' }}">
  @csrf
+</div>
+
  <div class="mb-3">
  <label for="song-name" class="form-label">Nosaukums</label>
  <input
@@ -99,7 +99,7 @@ enctype="multipart/form-data"
  <p class="invalid-feedback">{{ $errors->first('price') }}</p>
  @enderror
  </div>
- // image
+
  <div class="mb-3">
  <div class="form-check">
  <input
