@@ -78,10 +78,16 @@ class SongController extends Controller
             ]
         );
     }
-    
+
     public function delete(Song $song)
     {
         $song->delete();
         return redirect('/songs');
     }
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
 }

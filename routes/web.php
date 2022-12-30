@@ -4,6 +4,7 @@ use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\SongController;
+use App\Http\Controllers\AuthorizationController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,3 +32,8 @@ Route::post('/songs/put', [SongController::class, 'put']);
 Route::get('/songs/update/{song}', [SongController::class, 'update']);
 Route::post('/songs/patch/{song}', [SongController::class, 'patch']);
 Route::post('/songs/delete/{song}', [SongController::class, 'delete']);
+
+// Auth routes
+Route::get('/login', [AuthorizationController::class, 'login'])->name('login');
+Route::post('/auth', [AuthorizationController::class, 'authenticate']);
+Route::get('/logout', [AuthorizationController::class, 'logout']);

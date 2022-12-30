@@ -69,4 +69,10 @@ class AuthorController extends Controller
         return redirect('/authors');
     }
 
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+
 }
