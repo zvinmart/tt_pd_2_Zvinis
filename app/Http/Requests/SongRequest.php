@@ -15,6 +15,7 @@ class SongRequest extends FormRequest
         return [
             'name' => 'required|min:3|max:256',
             'author_id' => 'required',
+            'category_id' => 'required',
             'description' => 'nullable',
             'price' => 'nullable|numeric',
             'year' => 'numeric',
@@ -40,6 +41,7 @@ class SongRequest extends FormRequest
         return [
             'name' => 'nosaukums',
             'author_id' => 'autors',
+            'category_id' => 'categories',
             'description' => 'apraksts',
             'price' => 'cena',
             'year' => 'gads',

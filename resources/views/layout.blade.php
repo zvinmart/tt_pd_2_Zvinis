@@ -32,6 +32,9 @@ eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="a
                                     <a class="nav-link" href="/authors">Autori</a>
                                 </li>
                                 <li class="nav-item">
+                                    <a class="nav-link" href="/categories">Kategorijas</a>
+                                </li>
+                                <li class="nav-item">
                                     <a class="nav-link" href="/songs">Dziesmas</a>
                                 </li>
                                 @else

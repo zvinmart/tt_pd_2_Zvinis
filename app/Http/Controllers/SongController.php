@@ -31,6 +31,7 @@ class SongController extends Controller
                 'title' => 'Pievienot dziesmu',
                 'song' => new Song(),
                 'authors' => $authors,
+                //'category' => $category,
             ]
         );
     }

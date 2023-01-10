@@ -4,6 +4,8 @@ use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\SongController;
+use App\Http\Controllers\CategoryController;
+
 use App\Http\Controllers\AuthorizationController;
 /*
 |--------------------------------------------------------------------------
@@ -37,3 +39,12 @@ Route::post('/songs/delete/{song}', [SongController::class, 'delete']);
 Route::get('/login', [AuthorizationController::class, 'login'])->name('login');
 Route::post('/auth', [AuthorizationController::class, 'authenticate']);
 Route::get('/logout', [AuthorizationController::class, 'logout']);
+
+// Category routes
+Route::get('/categories', [CategoryController::class, 'list']);
+Route::get('/categories/create', [CategoryController::class, 'create']);
+Route::post('/categories/put', [CategoryController::class, 'put']);
+Route::get('/categories/update/{category}', [CategoryController::class, 'update']);
+Route::post('/categories/patch/{category}', [CategoryController::class, 'patch']);
+Route::post('/categories/delete/{category}', [CategoryController::class, 'delete']);
+
